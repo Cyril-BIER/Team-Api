@@ -4,23 +4,19 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
-public class Player {
-
+public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String firstName;
+    @Column(unique = true)
+    private String name;
 
-    private String lastName;
-
-    private int jerseyNumber;
-
-    private String role;
-
-    @ManyToOne
-    private Team team;
+    @OneToMany(mappedBy = "id", fetch = FetchType.EAGER)
+    private List<Player> players;
 }
