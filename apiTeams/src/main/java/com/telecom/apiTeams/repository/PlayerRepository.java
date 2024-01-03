@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface PlayerRepository extends JpaRepository<Player, Integer> {
-    List<Player> findByFirstNameIn(List<String> name);
-    List<Player> findByLastNameIn(List<String> name);
-    long deleteByIdIn(List<Integer> ids);
+    List<Player> findByIdIn(List<Integer> ids);
+    void deleteByIdIn(List<Integer> ids);
 }

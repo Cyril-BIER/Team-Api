@@ -11,14 +11,15 @@ import java.util.List;
 public class PlayerServiceImpl implements PlayerService{
     @Autowired
     PlayerRepository playerRepository;
+
     @Override
-    public List<Player> getPlayersByFirstName(List<String> firstNames) {
-        return playerRepository.findByFirstNameIn(firstNames);
+    public List<Player> getPlayersByIds(List<Integer> ids) {
+        return playerRepository.findByIdIn(ids);
     }
 
     @Override
-    public List<Player> getPlayersByLastName(List<String> lastNames) {
-        return playerRepository.findByLastNameIn(lastNames);
+    public List<Player> getPlayers() {
+        return playerRepository.findAll();
     }
 
     @Override
@@ -28,8 +29,9 @@ public class PlayerServiceImpl implements PlayerService{
     }
 
     @Override
-    public long deletePlayersById(List<Integer> ids) {
-        return playerRepository.deleteByIdIn(ids);
+    public void deletePlayersById(List<Integer> ids) {
+         playerRepository.deleteByIdIn(ids);
+         return;
     }
 
 
