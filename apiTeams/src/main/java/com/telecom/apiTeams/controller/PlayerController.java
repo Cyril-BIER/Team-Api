@@ -45,6 +45,7 @@ public class PlayerController {
         }
     }
 
+    // TODO : Is Transactional really needed or at the good place?
     @Transactional
     @DeleteMapping("/player")
     public ResponseEntity<Object> deletePlayer(

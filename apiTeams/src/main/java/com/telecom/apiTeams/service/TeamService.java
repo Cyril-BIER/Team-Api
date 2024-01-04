@@ -8,4 +8,6 @@ public interface TeamService {
     List<Team> getTeams(List<String> names);
 
     List<Team> saveTeams(List<Team> teams);
+
+    List<Team> deleteTeams(List<Integer> ids);
 }

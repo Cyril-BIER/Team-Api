@@ -17,6 +17,10 @@ public class Team {
     @Column(unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "id", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
     private List<Player> players;
+
+    public Team(String name){
+        this.name = name;
+    }
 }
