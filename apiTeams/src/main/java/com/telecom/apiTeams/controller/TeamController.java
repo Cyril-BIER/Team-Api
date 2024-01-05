@@ -2,10 +2,8 @@ package com.telecom.apiTeams.controller;
 
 import com.telecom.apiTeams.models.Team;
 import com.telecom.apiTeams.service.TeamService;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,8 +38,6 @@ public class TeamController {
         }
     }
 
-    // TODO : Is Transactional really needed or at the good place?
-    @Transactional
     @DeleteMapping("/team")
     public ResponseEntity<Object> deletePlayer(
             @RequestParam(name = "id") List<Integer> ids

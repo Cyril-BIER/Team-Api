@@ -2,13 +2,11 @@ package com.telecom.apiTeams.controller;
 
 import com.telecom.apiTeams.models.Player;
 import com.telecom.apiTeams.service.PlayerService;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -22,13 +20,7 @@ public class PlayerController {
             @RequestParam(name = "id", defaultValue ="") List<Integer> ids
     ){
         try{
-            List<Player> players = new ArrayList<>();
-            if(!ids.isEmpty()){
-                 players = playerService.getPlayersByIds(ids);
-            }else{
-                players= playerService.getPlayers();
-            }
-            return new ResponseEntity<>(players, HttpStatus.OK);
+            return new ResponseEntity<>(playerService.getPlayers(ids), HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -45,8 +37,6 @@ public class PlayerController {
         }
     }
 
-    // TODO : Is Transactional really needed or at the good place?
-    @Transactional
     @DeleteMapping("/player")
     public ResponseEntity<Object> deletePlayer(
             @RequestParam(name = "id") List<Integer> ids

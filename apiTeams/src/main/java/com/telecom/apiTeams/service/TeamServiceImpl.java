@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,7 +20,7 @@ public class TeamServiceImpl implements TeamService{
 
     @Override
     public List<Team> getTeams(List<String> names) {
-        List<Team> teams = new ArrayList<Team>();
+        List<Team> teams;
         if(!names.isEmpty()){
             teams = teamRepository.findByNameIn(names);
         }else{
@@ -30,6 +29,7 @@ public class TeamServiceImpl implements TeamService{
         return teams;
     }
 
+    @Transactional
     @Override
     public List<Team> saveTeams(List<Team> teams) {
         for (Team team : teams) {
@@ -47,6 +47,7 @@ public class TeamServiceImpl implements TeamService{
         return teams;
     }
 
+    @Transactional
     @Override
     public List<Team> deleteTeams(List<Integer> ids) {
         return teamRepository.deleteByIdIn(ids);

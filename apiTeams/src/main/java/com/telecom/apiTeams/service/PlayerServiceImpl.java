@@ -6,6 +6,7 @@ import com.telecom.apiTeams.repository.PlayerRepository;
 import com.telecom.apiTeams.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,22 +19,24 @@ public class PlayerServiceImpl implements PlayerService{
     TeamRepository teamRepository;
 
     @Override
-    public List<Player> getPlayersByIds(List<Integer> ids) {
-        return playerRepository.findByIdIn(ids);
+    public List<Player> getPlayers(List<Integer> ids) {
+        if(!ids.isEmpty()){
+            return playerRepository.findByIdIn(ids);
+        }else{
+            return playerRepository.findAll();
+        }
     }
 
-    @Override
-    public List<Player> getPlayers() {
-        return playerRepository.findAll();
-    }
+
 
     @Override
+    @Transactional
     public List<Player> savePlayers(List<Player> players) {
         for (Player player : players) {
             String teamName = player.getTeamName();
             Team team = player.getTeam();
 
-            if (team == null && teamName != null) {
+            if (team != null && teamName != null) {
                 team = teamRepository.findByName(teamName);
 
                 if (team == null) {
@@ -48,9 +51,8 @@ public class PlayerServiceImpl implements PlayerService{
     }
 
     @Override
+    @Transactional
     public void deletePlayersById(List<Integer> ids) {
          playerRepository.deleteByIdIn(ids);
     }
-
-
 }
