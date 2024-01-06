@@ -49,5 +49,14 @@ public class PlayerController {
         }
     }
 
+    @PutMapping("/player")
+    public ResponseEntity<List<Player>> updatePlayers(@RequestBody List<Player> updatedPlayers) {
+        try {
+            return new ResponseEntity<>(playerService.updatePlayers(updatedPlayers),HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            // Log the exception or handle it as needed
+            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 }
