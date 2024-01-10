@@ -3,19 +3,18 @@ const axios = require('axios');
 const teams = require('./teams.json')
 
 
-// console.log("Post the teams")
-// axios.post('http://localhost:8080/api/team', teams)
-//     .then(function (response) {
-//         console.log("Post succesfull");
-//         getPlayer();
+console.log("Post the teams")
+axios.post('http://localhost:8080/api/team', teams)
+    .then(function (response) {
+        console.log("Post succesfull");
+        getPlayer();
+        getTeam();
         
-//     })
-//     .catch(function (error) {
-//         console.log(error);
-//     });
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
 
-getPlayer();
-getTeam();
 
 async function getPlayer(){
     try {
