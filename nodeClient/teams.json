@@ -1,0 +1,72 @@
+[
+    {
+        "name": "ASSE",
+        "players": [
+            {
+                "firstName": "Ivan ",
+                "lastName": "Curkovic",
+                "jerseyNumber": 1,
+                "role": "GK"
+            },
+            {
+                "firstName": "Laurent ",
+                "lastName": "Blanc",
+                "jerseyNumber": 2,
+                "role": "DEF"
+            },
+            {
+                "firstName": "Michel",
+                "lastName": "Platini",
+                "jerseyNumber": 7,
+                "role": "MID"
+            },
+            {
+                "firstName": "Pascal",
+                "lastName": "Feindouno",
+                "jerseyNumber": 10,
+                "role": "MID"
+            },
+            {
+                "firstName": "Dominique",
+                "lastName": "Rocheteau",
+                "jerseyNumber": 11,
+                "role": "ATT"
+            }
+        ]
+    },
+    {
+        "name": "France",
+        "players": [
+            {
+                "firstName": "Fabien ",
+                "lastName": "Barthez",
+                "jerseyNumber": 1,
+                "role": "GK"
+            },
+            {
+                "firstName": "Raphael",
+                "lastName": "Varanne",
+                "jerseyNumber": 2,
+                "role": "DEF"
+            },
+            {
+                "firstName": "N'Golo",
+                "lastName": "Kante",
+                "jerseyNumber": 7,
+                "role": "MID"
+            },
+            {
+                "firstName": "Zinedine",
+                "lastName": "Zidane",
+                "jerseyNumber": 10,
+                "role": "MID"
+            },
+            {
+                "firstName": "Thierry",
+                "lastName": "Henry",
+                "jerseyNumber": 11,
+                "role": "ATT"
+            }
+        ]
+    }
+]
