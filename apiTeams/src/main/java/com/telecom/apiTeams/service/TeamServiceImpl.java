@@ -19,10 +19,21 @@ public class TeamServiceImpl implements TeamService{
     PlayerRepository playerRepository;
 
     @Override
-    public List<Team> getTeams(List<String> names) {
+    public List<Team> getTeamsByName(List<String> names) {
         List<Team> teams;
         if(!names.isEmpty()){
             teams = teamRepository.findByNameIn(names);
+        }else{
+            teams = teamRepository.findAll();
+        }
+        return teams;
+    }
+
+    @Override
+    public List<Team> getTeams(List<Integer> ids) {
+        List<Team> teams;
+        if(!ids.isEmpty()){
+            teams = teamRepository.findByIdIn(ids);
         }else{
             teams = teamRepository.findAll();
         }
@@ -34,7 +45,6 @@ public class TeamServiceImpl implements TeamService{
     public List<Team> saveTeams(List<Team> teams) {
         for (Team team : teams) {
             Team savedTeam = teamRepository.save(new Team(team.getName()));
-            teamRepository.flush();
 
             List<Player> players = team.getPlayers();
             if (players != null) {

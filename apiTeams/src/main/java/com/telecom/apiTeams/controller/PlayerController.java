@@ -16,7 +16,7 @@ public class PlayerController {
     PlayerService playerService;
 
     @GetMapping("/player")
-    public ResponseEntity<List<Player>> getPlayerFirstName(
+    public ResponseEntity<List<Player>> getPlayer(
             @RequestParam(name = "id", defaultValue ="") List<Integer> ids
     ){
         try{

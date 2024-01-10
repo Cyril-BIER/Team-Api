@@ -17,10 +17,17 @@ public class TeamController {
 
     @GetMapping("/team")
     public ResponseEntity<List<Team>> getTeams(
+            @RequestParam(name = "id", defaultValue ="") List<Integer> ids,
             @RequestParam(name = "name", defaultValue ="") List<String> names
     ){
         try {
-            return new ResponseEntity<>(teamService.getTeams(names),HttpStatus.OK);
+            List<Team> teams;
+            if(!ids.isEmpty()){
+                teams = teamService.getTeams(ids);
+            }else{
+                teams = teamService.getTeamsByName(names);
+            }
+            return new ResponseEntity<>(teams,HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -43,8 +50,8 @@ public class TeamController {
             @RequestParam(name = "id") List<Integer> ids
     ){
         try {
-            teamService.deleteTeams(ids);
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+            List<Team> team = teamService.deleteTeams(ids);
+            return new ResponseEntity<>(team, HttpStatus.ACCEPTED);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
