@@ -1,6 +1,6 @@
-package com.telecom.apiTeams.repository;
+package com.telecom.apiTeams.dao;
 
-import com.telecom.apiTeams.models.Team;
+import com.telecom.apiTeams.domain.Team;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

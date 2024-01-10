@@ -1,6 +1,6 @@
 package com.telecom.apiTeams.controller;
 
-import com.telecom.apiTeams.models.Player;
+import com.telecom.apiTeams.domain.Player;
 import com.telecom.apiTeams.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

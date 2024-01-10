@@ -1,9 +1,9 @@
 package com.telecom.apiTeams.service;
 
-import com.telecom.apiTeams.models.Player;
-import com.telecom.apiTeams.models.Team;
-import com.telecom.apiTeams.repository.PlayerRepository;
-import com.telecom.apiTeams.repository.TeamRepository;
+import com.telecom.apiTeams.domain.Player;
+import com.telecom.apiTeams.domain.Team;
+import com.telecom.apiTeams.dao.PlayerRepository;
+import com.telecom.apiTeams.dao.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

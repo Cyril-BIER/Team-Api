@@ -1,6 +1,6 @@
 package com.telecom.apiTeams.service;
 
-import com.telecom.apiTeams.models.Player;
+import com.telecom.apiTeams.domain.Player;
 
 import java.util.List;
 

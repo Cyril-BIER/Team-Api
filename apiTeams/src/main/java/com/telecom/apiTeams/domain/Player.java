@@ -1,4 +1,4 @@
-package com.telecom.apiTeams.models;
+package com.telecom.apiTeams.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;

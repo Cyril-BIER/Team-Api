@@ -1,4 +1,4 @@
-package com.telecom.apiTeams.models;
+package com.telecom.apiTeams.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
