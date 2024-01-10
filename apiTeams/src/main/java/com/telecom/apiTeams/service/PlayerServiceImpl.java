@@ -4,6 +4,7 @@ import com.telecom.apiTeams.domain.Player;
 import com.telecom.apiTeams.domain.Team;
 import com.telecom.apiTeams.dao.PlayerRepository;
 import com.telecom.apiTeams.dao.TeamRepository;
+import com.telecom.apiTeams.dto.PlayerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,22 +33,23 @@ public class PlayerServiceImpl implements PlayerService{
 
     @Override
     @Transactional
-    public List<Player> savePlayers(List<Player> players) {
-        for (Player player : players) {
-            String teamName = player.getTeamName();
-            Team team = player.getTeam();
+    public List<Player> savePlayers(List<PlayerDTO> playerDTOS) {
+        List<Player> players = new ArrayList<>();
+        for (PlayerDTO playerDTO : playerDTOS) {
+            String teamName = playerDTO.getTeamName();
+            Team team = teamRepository.findByName(teamName);
 
-            if (team != null && teamName != null) {
-                team = teamRepository.findByName(teamName);
-
-                if (team == null) {
-                    team = teamRepository.save(new Team(teamName));
-                }
-
-                player.setTeam(team);
+            if (team == null) {
+                team = new Team();
+                team.setName(teamName);
+                team = teamRepository.save(team);
             }
+
+            Player player = playerDTO.toPlayer();
+            player.setTeam(team);
+            players.add(player);
         }
-        playerRepository.saveAll(players);
+        players = playerRepository.saveAll(players);
         return players;
     }
 

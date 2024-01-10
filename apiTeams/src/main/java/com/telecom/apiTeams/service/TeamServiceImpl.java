@@ -4,10 +4,13 @@ import com.telecom.apiTeams.domain.Player;
 import com.telecom.apiTeams.domain.Team;
 import com.telecom.apiTeams.dao.PlayerRepository;
 import com.telecom.apiTeams.dao.TeamRepository;
+import com.telecom.apiTeams.dto.PlayerDTO;
+import com.telecom.apiTeams.dto.TeamDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -42,19 +45,26 @@ public class TeamServiceImpl implements TeamService{
 
     @Transactional
     @Override
-    public List<Team> saveTeams(List<Team> teams) {
-        for (Team team : teams) {
-            Team savedTeam = teamRepository.save(new Team(team.getName()));
+    public List<Team> saveTeams(List<TeamDTO> teams) {
+        List<Team> returnTeams= new ArrayList<>();
+        for (TeamDTO teamDTO : teams) {
+            Team team = new Team();
+            team.setName(teamDTO.getName());
 
-            List<Player> players = team.getPlayers();
+            List<PlayerDTO> players = teamDTO.getPlayers();
+            List<Player> teamPlayers = new ArrayList<>();
             if (players != null) {
-                for (Player player : players) {
-                    player.setTeam(savedTeam);
+                for (PlayerDTO playerDto : players) {
+                    Player player = playerDto.toPlayer();
+                    teamPlayers.add(player);
+                    player.setTeam(team);
                 }
-                playerRepository.saveAll(players);
             }
+            team.setPlayers(teamPlayers);
+            returnTeams.add(team);
         }
-        return teams;
+        teamRepository.saveAll(returnTeams);
+        return returnTeams;
     }
 
     @Transactional

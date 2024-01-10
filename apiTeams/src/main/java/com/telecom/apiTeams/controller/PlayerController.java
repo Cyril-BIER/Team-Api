@@ -1,6 +1,7 @@
 package com.telecom.apiTeams.controller;
 
 import com.telecom.apiTeams.domain.Player;
+import com.telecom.apiTeams.dto.PlayerDTO;
 import com.telecom.apiTeams.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,7 +29,7 @@ public class PlayerController {
 
     @PostMapping("/player")
     public ResponseEntity<List<Player>> postPlayer(
-            @RequestBody List<Player> players
+            @RequestBody List<PlayerDTO> players
     ){
         try {
             return new ResponseEntity<>(playerService.savePlayers(players),HttpStatus.ACCEPTED);

@@ -1,6 +1,7 @@
 package com.telecom.apiTeams.controller;
 
 import com.telecom.apiTeams.domain.Team;
+import com.telecom.apiTeams.dto.TeamDTO;
 import com.telecom.apiTeams.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,7 +36,7 @@ public class TeamController {
 
     @PostMapping("/team")
     public ResponseEntity<List<Team>> postTeams(
-            @RequestBody List<Team> teams
+            @RequestBody List<TeamDTO> teams
     ){
         try {
             return new ResponseEntity<>(teamService.saveTeams(teams),HttpStatus.ACCEPTED);
