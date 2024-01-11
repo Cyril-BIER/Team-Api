@@ -61,11 +61,11 @@ public class PlayerServiceImpl implements PlayerService{
 
     @Override
     @Transactional
-    public List<Player> updatePlayers(List<Player> updatedPlayers) {
+    public List<Player> updatePlayers(List<PlayerDTO> updatedPlayers) {
         List<Player> existingPlayers = new ArrayList<>();
-        for (Player updatedPlayer : updatedPlayers) {
-            int playerId = updatedPlayer.getId();
-            Player existingPlayer = playerRepository.findById(playerId).orElse(null);
+        for (PlayerDTO updatedPlayer : updatedPlayers) {
+
+            Player existingPlayer = playerRepository.findById(updatedPlayer.getId()).orElse(null);
 
             if (existingPlayer != null) {
                 existingPlayer.setFirstName(updatedPlayer.getFirstName());
@@ -73,15 +73,15 @@ public class PlayerServiceImpl implements PlayerService{
                 existingPlayer.setJerseyNumber(updatedPlayer.getJerseyNumber());
                 existingPlayer.setRole(updatedPlayer.getRole());
 
-
                 String teamName = updatedPlayer.getTeamName();
-
 
                 if (teamName != null) {
                     Team team = teamRepository.findByName(teamName);
 
                     if (team == null) {
-                        team = teamRepository.save(new Team(teamName));
+                        team = new Team();
+                        team.setName(teamName);
+                        team = teamRepository.save(team);
                     }
 
                     existingPlayer.setTeam(team);

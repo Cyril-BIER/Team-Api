@@ -5,6 +5,8 @@ import lombok.Data;
 
 @Data
 public class PlayerDTO {
+    private int id;
+
     private String firstName;
 
     private String lastName;
