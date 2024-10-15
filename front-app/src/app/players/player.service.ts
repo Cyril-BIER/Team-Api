@@ -130,7 +130,7 @@ export class PlayerService {
       this._state;
 
     return this.http
-      .get<Player[]>('http://localhost:8080/api/player') // Replace with your API URL
+      .get<Player[]>('http://localhost:8080/api/player')
       .pipe(
         switchMap((players) => {
           // 1. sort

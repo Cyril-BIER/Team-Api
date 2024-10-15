@@ -1,0 +1,27 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add player</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+  <form (ngSubmit)="submit()">
+    <label for="firstName">First Name:</label>
+    <input id="firstName" [(ngModel)]="playerData[0].firstName" name="firstName" required>
+
+    <label for="lastName">Last Name:</label>
+    <input id="lastName" [(ngModel)]="playerData[0].lastName" name="lastName" required>
+
+    <label for="jerseyNumber">Jersey Number:</label>
+    <input id="jerseyNumber" type="number" [(ngModel)]="playerData[0].jerseyNumber" name="jerseyNumber" required>
+
+    <label for="role">Role:</label>
+    <input id="role" [(ngModel)]="playerData[0].role" name="role" required>
+
+    <label for="teamName">Team Name:</label>
+    <input id="teamName" [(ngModel)]="playerData[0].teamName" name="teamName" required>
+
+
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="submit" (click)="submit()">Submit</button>
+</div>

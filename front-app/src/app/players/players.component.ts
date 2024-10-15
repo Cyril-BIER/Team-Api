@@ -7,9 +7,7 @@ import { PlayerService } from './player.service';
 import { NgbdSortableHeader, SortEvent } from './sortable.directive';
 import { FormsModule } from '@angular/forms';
 import { NgbHighlight, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
-
-
-
+import { CreatePlayerComponent } from '../create-player/create-player.component';
 
 @Component({
   selector: 'players-app',
@@ -21,6 +19,7 @@ import { NgbHighlight, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
     NgbHighlight,
     NgbdSortableHeader,
     NgbPaginationModule,
+    CreatePlayerComponent
   ],
   templateUrl: './players.component.html',
   providers: [PlayerService, DecimalPipe],
