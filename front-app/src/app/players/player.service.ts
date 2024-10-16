@@ -152,4 +152,13 @@ export class PlayerService {
         })
       );
   }
+
+  public delete(id : number):Observable<void>{
+
+    let url = `http://localhost:8080/api/player?id=${id}`;
+    console.log(url);
+    return this.http
+      .delete<void>(url);
+
+  }
 }

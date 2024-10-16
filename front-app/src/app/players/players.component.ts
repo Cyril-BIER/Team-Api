@@ -8,6 +8,8 @@ import { NgbdSortableHeader, SortEvent } from './sortable.directive';
 import { FormsModule } from '@angular/forms';
 import { NgbHighlight, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreatePlayerComponent } from '../create-player/create-player.component';
+import { NgIconComponent } from '@ng-icons/core';
+import { bootstrapPersonDash } from '@ng-icons/bootstrap-icons';
 
 @Component({
   selector: 'players-app',
@@ -19,12 +21,14 @@ import { CreatePlayerComponent } from '../create-player/create-player.component'
     NgbHighlight,
     NgbdSortableHeader,
     NgbPaginationModule,
-    CreatePlayerComponent
+    CreatePlayerComponent,
+    NgIconComponent
   ],
   templateUrl: './players.component.html',
   providers: [PlayerService, DecimalPipe],
 })
 export class PlayersComponent {
+  iconDeletePlayer = bootstrapPersonDash;
   players$: Observable<Player[]>;
   total$: Observable<number>;
 
@@ -45,5 +49,17 @@ export class PlayersComponent {
 
     this.service.sortColumn = column;
     this.service.sortDirection = direction;
+  }
+
+  onDelete(id:number):void{
+    this.service.delete(id).subscribe({
+      next:()=>{
+        console.log("deleted");
+        window.location.reload();
+      },
+      error(err) {
+        console.error(err)
+      },
+    })
   }
 }

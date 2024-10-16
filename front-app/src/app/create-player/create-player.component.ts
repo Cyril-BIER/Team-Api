@@ -31,6 +31,7 @@ export class CreatePlayerContent {
       next: (response) => {
         console.log('Success!', response);
         this.activeModal.close()
+        window.location.reload();
       },
       error: (error) => {
         console.error('Error!', error);
