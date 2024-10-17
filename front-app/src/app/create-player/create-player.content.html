@@ -4,21 +4,29 @@
 </div>
 <div class="modal-body">
   <form (ngSubmit)="submit()">
-    <label for="firstName">First Name:</label>
-    <input id="firstName" [(ngModel)]="playerData[0].firstName" name="firstName" required>
+    <div class="mb-3 d-flex justify-content-between ">
+      <label for="firstName">First Name:</label>
+      <input id="firstName" [(ngModel)]="playerData[0].firstName" name="firstName" required>
+    </div>
+    <div class="mb-3 d-flex justify-content-between">
+      <label for="lastName">Last Name:</label>
+      <input id="lastName" [(ngModel)]="playerData[0].lastName" name="lastName" required>
+    </div>
 
-    <label for="lastName">Last Name:</label>
-    <input id="lastName" [(ngModel)]="playerData[0].lastName" name="lastName" required>
+    <div class="mb-3 d-flex justify-content-between">
+      <label for="jerseyNumber">Jersey Number:</label>
+      <input id="jerseyNumber" type="number" [(ngModel)]="playerData[0].jerseyNumber" name="jerseyNumber" required>
+    </div>
 
-    <label for="jerseyNumber">Jersey Number:</label>
-    <input id="jerseyNumber" type="number" [(ngModel)]="playerData[0].jerseyNumber" name="jerseyNumber" required>
+    <div class="mb-3 d-flex justify-content-between">
+      <label for="role">Role:</label>
+      <input id="role" [(ngModel)]="playerData[0].role" name="role" required>
+    </div>
 
-    <label for="role">Role:</label>
-    <input id="role" [(ngModel)]="playerData[0].role" name="role" required>
-
-    <label for="teamName">Team Name:</label>
-    <input id="teamName" [(ngModel)]="playerData[0].teamName" name="teamName" required>
-
+    <div class="mb-3 d-flex justify-content-between">
+      <label for="teamName">Team Name:</label>
+      <input id="teamName" [(ngModel)]="playerData[0].teamName" name="teamName" required>
+    </div>
 
   </form>
 </div>

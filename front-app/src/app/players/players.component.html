@@ -5,7 +5,10 @@
       <input id="table-complete-search" type="text" class="form-control" name="searchTerm"
         [(ngModel)]="service.searchTerm" />
     </div>
-    <app-create-player />
+    <div class="col">
+      <app-create-player />
+    </div>
+
     @if (service.loading$ | async) {
     <span class="col col-form-label">Loading...</span>
     }
@@ -14,7 +17,7 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">#</th>
+        <th scope="col">ID</th>
         <th scope="col" sortable="firstName" (sort)="onSort($event)">First Name</th>
         <th scope="col" sortable="lastName" (sort)="onSort($event)">Last Name</th>
         <th scope="col" sortable="role" (sort)="onSort($event)">Role</th>
@@ -32,7 +35,7 @@
         <td><ngb-highlight [result]="player.jerseyNumber | number" [term]="service.searchTerm" /></td>
         <td><ngb-highlight [result]="player.teamName" [term]="service.searchTerm" /></td>
         <td>
-          <button title="deleteButton" type="button" (click)="onDelete(player.id)">
+          <button title="deleteButton" type="button" class="btn btn-danger" (click)="onDelete(player.id)">
             <ng-icon [svg]="iconDeletePlayer" />
           </button>
         </td>
@@ -49,7 +52,7 @@
     <ngb-pagination [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
     </ngb-pagination>
 
-    <select id="pageSize" title="pageSize" class="form-select" style="width: auto" name="pageSize"
+    <select id="pageSize" title="pageSize" class="form-select-sm"  name="pageSize"
       [(ngModel)]="service.pageSize">
       <option [ngValue]="10">10 items per page</option>
       <option [ngValue]="30">30 items per page</option>
